@@ -4,7 +4,6 @@ from fastapi.responses import JSONResponse
 router = APIRouter()
 
 
-
 # 1. User Registration Endpoint
 # Steps:
 # - Validate the input data (e.g., username, email, password).

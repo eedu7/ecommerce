@@ -1,5 +1,6 @@
 class UserAuditMixin:
     """Mixins class to add auditing fields for created_by, updated_by, and deleted_by"""
+
     pass
     # @declared_attr
     # def created_by(cls) -> Mapped[Optional[int]]:

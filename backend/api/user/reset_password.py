@@ -27,4 +27,3 @@ async def password_reset_request(password: str) -> JSONResponse:
 @router.post("/password-reset/{token}")
 async def reset_password(token: str) -> JSONResponse:
     return JSONResponse({"message": "Password Reset", "token": token})
-

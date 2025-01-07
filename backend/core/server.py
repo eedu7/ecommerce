@@ -7,7 +7,6 @@ def init_routers(app_: FastAPI) -> None:
     app_.include_router(router)
 
 
-
 def create_app() -> FastAPI:
     app_ = FastAPI(
         title="E-Commerce User-Service",

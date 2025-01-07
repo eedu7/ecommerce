@@ -48,4 +48,3 @@ class UnprocessableException(HttpStatusException):
 class DuplicateValueException(HttpStatusException):
     def __init__(self, message=None):
         super().__init__(HTTPStatus.UNPROCESSABLE_ENTITY, message)
-

@@ -1,7 +1,12 @@
-from .base import (BadRequestException, CustomException,
-                   DuplicateValueException, ForbiddenException,
-                   NotFoundException, UnauthorizedException,
-                   UnprocessableException)
+from .base import (
+    BadRequestException,
+    CustomException,
+    DuplicateValueException,
+    ForbiddenException,
+    NotFoundException,
+    UnauthorizedException,
+    UnprocessableException,
+)
 
 __all__ = [
     "CustomException",
@@ -12,4 +17,3 @@ __all__ = [
     "UnprocessableException",
     "DuplicateValueException",
 ]
-

@@ -23,4 +23,3 @@ async def get_user_profile() -> JSONResponse:
 @router.put("/update")
 async def update_user_profile() -> JSONResponse:
     return JSONResponse({"message": "User Profile Update"})
-
