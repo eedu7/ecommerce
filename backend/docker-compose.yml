@@ -1,4 +1,3 @@
-version: "3.8"
 
 services:
   postgresql-ecommerce-store-db:
@@ -11,8 +10,6 @@ services:
       - "5432:5432"
     volumes:
       - ./pgdata/ecommerce-store-db:/var/lib/postgresql/data
-    networks:
-      - ecommerce-store-db_network
     restart: always
 
 #  postgresql-ecommerce-store-db-test:
