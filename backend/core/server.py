@@ -5,7 +5,7 @@ from fastapi.middleware import Middleware
 from fastapi.middleware.cors import CORSMiddleware
 
 from api import router
-from core.fastapi.middlewares import (SQLAlchemyMiddleware)
+from core.fastapi.middlewares import SQLAlchemyMiddleware
 
 
 def init_routers(app_: FastAPI) -> None:
