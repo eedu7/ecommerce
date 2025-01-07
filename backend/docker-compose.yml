@@ -1,0 +1,53 @@
+version: "3.8"
+
+services:
+  postgresql-ecommerce-store-db:
+    image: postgres:17-alpine3.20
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: ecommerce-store-db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pgdata/ecommerce-store-db:/var/lib/postgresql/data
+    networks:
+      - ecommerce-store-db_network
+    restart: always
+
+  postgresql-ecommerce-store-db-test:
+    image: postgres:17-alpine3.20
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: ecommerce-store-db-test
+    ports:
+      - "5431:5431"
+    volumes:
+      - ./postgresql-test/ecommerce-store-db:/var/lib/postgresql/data
+    networks:
+      - ecommerce-store-db_network
+    restart: always
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: adminpassword
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+    networks:
+      - user_service_network
+    restart: always
+    depends_on:
+      - postgresql-ecommerce-store-db
+      - postgresql-ecommerce-store-db-test
+
+networks:
+  user_service_network:
+    driver: bridge
+
+volumes:
+  pgadmin_data:
