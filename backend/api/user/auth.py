@@ -1,5 +1,9 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends, status
 from fastapi.responses import JSONResponse
+
+from app.controllers import AuthController
+from app.schemas.requests.user import RegisterUserRequest
+from core.factory import Factory
 
 router = APIRouter()
 
@@ -11,9 +15,12 @@ router = APIRouter()
 # - Hash the password for security.
 # - Store the new user in the database.
 # - Return a success message or appropriate error response.
-@router.post("/register")
-async def register_user() -> JSONResponse:
-    return JSONResponse({"message": "User Registered"})
+@router.post("/register", status_code=status.HTTP_201_CREATED)
+async def register_user(
+    user_data: RegisterUserRequest,
+    controller: AuthController = Depends(Factory().get_auth_controller),
+):
+    return await controller.register(**user_data.model_dump())
 
 
 # 2. User Login Endpoint

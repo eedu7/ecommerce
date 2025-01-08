@@ -5,10 +5,10 @@ from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column
 
 from core.database import Base
-from core.database.mixins import TimestampMixin, UserAuditMixin
+from core.database.mixins import TimestampMixin
 
 
-class User(Base, TimestampMixin, UserAuditMixin):
+class User(Base, TimestampMixin):
     __tablename__ = "users"
 
     id: Mapped[int] = mapped_column(BigInteger, primary_key=True, autoincrement=True)
