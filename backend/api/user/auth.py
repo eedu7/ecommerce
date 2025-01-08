@@ -2,10 +2,11 @@ from fastapi import APIRouter, Depends, status
 from fastapi.responses import JSONResponse
 
 from app.controllers import AuthController
-from app.schemas.requests.user import RegisterUserRequest, LoginUserRequest
+from app.schemas.requests.user import LoginUserRequest, RegisterUserRequest
 from core.factory import Factory
 
 router = APIRouter()
+
 
 @router.post("/register", status_code=status.HTTP_201_CREATED)
 async def register_user(
@@ -16,9 +17,12 @@ async def register_user(
 
 
 @router.post("/login")
-async def login_user(user_data: LoginUserRequest,
-                     auth_controller: AuthController = Depends(Factory().get_auth_controller),):
+async def login_user(
+    user_data: LoginUserRequest,
+    auth_controller: AuthController = Depends(Factory().get_auth_controller),
+):
     return await auth_controller.login(**user_data.model_dump())
+
 
 # 3. User Logout Endpoint
 # Steps:
