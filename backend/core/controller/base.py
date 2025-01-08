@@ -1,10 +1,7 @@
 from typing import Any, Dict, Generic, Type, TypeVar
 from uuid import UUID
 
-from pydantic import BaseModel
-
 from core.database import Base, Propagation, Transactional
-from core.exceptions import NotFoundException
 from core.repository import BaseRepository
 
 ModelType = TypeVar("ModelType", bound=Base)
@@ -55,7 +52,7 @@ class BaseController(Generic[ModelType]):
         return response
 
     @Transactional(propagation=Propagation.REQUIRED)
-    async def create(self, attributes: dict[str, Any]) -> ModelType:
+    async def create_model(self, attributes: dict[str, Any]) -> ModelType:
         """
         Creates a new Object in the DB.
 
@@ -66,7 +63,7 @@ class BaseController(Generic[ModelType]):
         return create
 
     @Transactional(propagation=Propagation.REQUIRED)
-    async def delete(self, model: ModelType) -> bool:
+    async def delete_model(self, model: ModelType) -> bool:
         delete = await self.repository.delete(model)
         return delete
 
