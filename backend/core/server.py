@@ -31,6 +31,7 @@ def create_app() -> FastAPI:
         title="E-Commerce",
         description="Backend for the E-Commerce API",
         version="1.0.1",
+        middleware=make_middleware(),
     )
     init_routers(app_)
     return app_
