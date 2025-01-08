@@ -1,5 +1,9 @@
 from fastapi import APIRouter
+from fastapi.params import Depends
 from fastapi.responses import JSONResponse
+
+from app.models import User
+from core.fastapi.dependencies import AuthenticationRequired, get_current_user
 
 router = APIRouter()
 
@@ -9,9 +13,13 @@ router = APIRouter()
 # - Authenticate the request to ensure the user is logged in.
 # - Retrieve the user's profile details from the database.
 # - Return the user's profile data or an error if the user is not found.
-@router.get("/profile")
-async def get_user_profile() -> JSONResponse:
-    return JSONResponse({"message": "User Profile"})
+@router.get("/profile", dependencies=[Depends(AuthenticationRequired)])
+async def get_user_profile(
+    current_user: User = Depends(get_current_user),
+) -> JSONResponse:
+    return JSONResponse(
+        {"username": current_user.username, "email": current_user.email}
+    )
 
 
 # 5. Update User Profile Endpoint

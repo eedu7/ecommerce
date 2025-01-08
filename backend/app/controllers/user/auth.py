@@ -42,7 +42,9 @@ class AuthController(BaseController[User]):
         if not user:
             raise BadRequestException("Invalid credentials")
 
-        if not PasswordHandler.verify(user.password, password):
+        hashed_password = user.password
+
+        if not PasswordHandler.verify(password, hashed_password):
             raise BadRequestException("Invalid credentials")
 
         return Token(
