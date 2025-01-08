@@ -19,9 +19,3 @@ class Config(BaseConfig):
 
 
 config: Config = Config()
-
-print(config.POSTGRES_URL)
-print(config.TEST_POSTGRES_URL)
-print(config.JWT_SECRET_KEY)
-print(config.JWT_ALGORITHM)
-print(config.JWT_EXPIRATION)
