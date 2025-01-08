@@ -1,0 +1,15 @@
+meta {
+  name: Get Current User
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{HOST}}:{{PORT}}/profile/
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo4LCJleHAiOjE3Mzc4MzE3OTl9.XgPoKVDIQQDyCQ3ez2WOm96IGRajbDOAGpNa2BPLuhg
+}
