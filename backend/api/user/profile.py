@@ -13,7 +13,7 @@ router = APIRouter()
 # - Authenticate the request to ensure the user is logged in.
 # - Retrieve the user's profile details from the database.
 # - Return the user's profile data or an error if the user is not found.
-@router.get("/profile", dependencies=[Depends(AuthenticationRequired)])
+@router.get("/", dependencies=[Depends(AuthenticationRequired)])
 async def get_user_profile(
     current_user: User = Depends(get_current_user),
 ) -> JSONResponse:
