@@ -28,10 +28,10 @@ fileConfig(config.config_file_name)
 
 from app.models import Base
 
+target_metadata = Base.metadata
+
 # For auto generate schemas
 from core.config import config as app_config
-
-target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
