@@ -1,9 +1,4 @@
-from sqlalchemy import Select
-from sqlalchemy.exc import NoResultFound
-from sqlalchemy.orm import joinedload
-
 from app.models import User
-from core.exceptions import NotFoundException, BadRequestException
 from core.repository import BaseRepository
 
 
