@@ -13,7 +13,7 @@ class AuthController(BaseController[User]):
         self.user_repository = user_repository
 
     @Transactional(propagation=Propagation.REQUIRED)
-    async def register(self, email: str, password: str, username: str) -> User:
+    async def register(self, email: str, password: str, username: str) -> Token:
         # Check if user exists with email
         user = await self.user_repository.get_by_email(email)
 
@@ -28,13 +28,15 @@ class AuthController(BaseController[User]):
 
         password = PasswordHandler.hash(password)
 
-        return await self.create_model(
+        await self.create_model(
             {
                 "email": email,
                 "password": password,
                 "username": username,
             }
         )
+
+        return await self.login(email, password)
 
     async def login(self, email: str, password: str) -> Token:
         user = await self.user_repository.get_by_email(email)
