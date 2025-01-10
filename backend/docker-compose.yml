@@ -12,19 +12,17 @@ services:
       - ./pgdata/ecommerce-store-db:/var/lib/postgresql/data
     restart: always
 
-#  postgresql-ecommerce-store-db-test:
-#    image: postgres:17-alpine3.20
-#    environment:
-#      POSTGRES_USER: postgres
-#      POSTGRES_PASSWORD: password123
-#      POSTGRES_DB: ecommerce-store-db-test
-#    ports:
-#      - "5431:5431"
-#    volumes:
-#      - ./postgresql-test/ecommerce-store-db:/var/lib/postgresql/data
-#    networks:
-#      - ecommerce-store-db_network
-#    restart: always
+  postgresql-ecommerce-store-db-test:
+    image: postgres:17-alpine3.20
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: ecommerce-store-db-test
+    ports:
+      - "5431:5431"
+    volumes:
+      - ./postgresql-test/ecommerce-store-db:/var/lib/postgresql/data
+    restart: always
 
   pgadmin:
     image: dpage/pgadmin4:latest
