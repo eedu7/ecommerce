@@ -39,8 +39,8 @@ class JWTHandler:
                 JWTHandler.secret_key,
                 algorithms=[JWTHandler.algorithm],
             )
-        except ExpiredSignatureError as e:
-            raise JWTExpiredError() from e
+        except ExpiredSignatureError:
+            raise JWTExpiredError()
         except JWTError as e:
             raise JWTDecodeError() from e
 

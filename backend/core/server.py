@@ -30,7 +30,7 @@ def init_routers(app_: FastAPI) -> None:
 
 
 def init_listeners(app_: FastAPI) -> None:
-    @app_.exception_handler(CustomException)
+    @app_.exception_handler(Exception)
     async def custom_exception_handler(request: Request, exc: CustomException):
         return JSONResponse(
             status_code=exc.code,

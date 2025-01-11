@@ -6,6 +6,13 @@ meta {
 
 post {
   url: {{HOST}}:{{PORT}}/lauth/login
-  body: none
+  body: json
   auth: none
+}
+
+body:json {
+  {
+    "email": "john.doe@example.com",
+    "password": "p(KN6I`oZ[T"
+  }
 }
