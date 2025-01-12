@@ -8,6 +8,8 @@ services:
       POSTGRES_DB: ecommerce-store-db
     ports:
       - "5432:5432"
+    networks:
+      - ecommerce_store_network
     volumes:
       - ./pgdata/ecommerce-store-db:/var/lib/postgresql/data
     restart: always
@@ -34,14 +36,14 @@ services:
     volumes:
       - pgadmin_data:/var/lib/pgadmin
     networks:
-      - user_service_network
+      - ecommerce_store_network
     restart: always
     depends_on:
       - postgresql-ecommerce-store-db
 #      - postgresql-ecommerce-store-db-test
 
 networks:
-  user_service_network:
+  ecommerce_store_network:
     driver: bridge
 
 volumes:

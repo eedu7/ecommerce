@@ -13,14 +13,12 @@ class AuthController(BaseController[User]):
         self.user_repository = user_repository
 
     @Transactional(propagation=Propagation.REQUIRED)
-    async def register(self, email: str, password: str, username: str) -> Token:
-        # Check if user exists with email
+    async def register(self, email: str, password: str, username: str) -> User:
         user = await self.user_repository.get_by_email(email)
 
         if user:
             raise BadRequestException("User already exists with this email")
 
-        # Check if user exists with username
         user = await self.user_repository.get_by_username(username)
 
         if user:
@@ -28,15 +26,13 @@ class AuthController(BaseController[User]):
 
         password = PasswordHandler.hash(password)
 
-        await self.create_model(
+        return await self.create_model(
             {
                 "email": email,
                 "password": password,
                 "username": username,
             }
         )
-
-        return await self.login(email, password)
 
     async def login(self, email: str, password: str) -> Token:
         user = await self.user_repository.get_by_email(email)

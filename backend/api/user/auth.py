@@ -6,7 +6,7 @@ from app.schemas.extras import Token
 from app.schemas.requests.user import LoginUserRequest, RegisterUserRequest
 from core.factory import Factory
 
-router = APIRouter()
+router: APIRouter = APIRouter()
 
 
 @router.post("/register", status_code=status.HTTP_201_CREATED, response_model=Token)
@@ -14,7 +14,9 @@ async def register_user(
     user_data: RegisterUserRequest,
     auth_controller: AuthController = Depends(Factory().get_auth_controller),
 ) -> Token:
-    return await auth_controller.register(**user_data.model_dump())
+    data = user_data.model_dump()
+    await auth_controller.register(**data)
+    return await auth_controller.login(data["email"], data["password"])
 
 
 @router.post("/login", status_code=status.HTTP_200_OK, response_model=Token)
