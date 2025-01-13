@@ -13,7 +13,7 @@ import SocailAuthButton from "@/features/authentication/social-auth/SocialAuth";
 
 const SignUpPage = () => {
     return (
-        <Card className="w-[400px] md:w-[480px]">
+        <Card className="w-[300px] md:w-[480px]">
             <CardHeader className="text-center">
                 <CardTitle className="text-2xl">Register Here</CardTitle>
                 <CardDescription>How are you doing?</CardDescription>
