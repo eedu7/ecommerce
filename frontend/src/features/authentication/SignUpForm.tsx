@@ -14,6 +14,7 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import useAuth from "./useAuth";
 
 const formScheme = z
     .object({
@@ -76,9 +77,11 @@ const SignUpForm = () => {
         mode: "onChange",
     });
 
+    const { Register } = useAuth();
+
     const onSubmit = (values: FormSchema) => {
-        console.log("Form Submitted:", values);
-        alert("Form submitted successfully!");
+        const { email, password, username } = values;
+        Register.mutate({ email, password, username });
     };
 
     return (
@@ -110,7 +113,11 @@ const SignUpForm = () => {
                     placeholder="Re-enter your password"
                     form={form}
                 />
-                <Button type="submit">Submit</Button>
+                <div className="w-full">
+                    <Button type="submit" className="w-full">
+                        Submit
+                    </Button>
+                </div>
             </form>
         </Form>
     );
