@@ -1,5 +1,9 @@
 import React from "react";
 
+/* 
+    TODO: Form Scheme validation i,e username, email and password -> password must contain small and capital letters, numbers and punctuation.
+*/
+
 const layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
     return (
         <section className="w-screen h-screen max-w-7xl mx-auto">
