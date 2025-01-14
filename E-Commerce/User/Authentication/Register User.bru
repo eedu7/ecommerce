@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: {{HOST}}:{{PORT}}/auth/register
+  url: {{HOST}}:8002/auth/register
   body: json
   auth: bearer
 }
@@ -16,8 +16,8 @@ auth:bearer {
 
 body:json {
   {
-    "email": "john.doe@example.com",
+    "email": "john20.doe@example.com",
     "password": "p(KN6I`oZ[T",
-    "username": "John"
+    "username": "John20"
   }
 }

@@ -21,6 +21,7 @@ async def register_user(
     except Exception as e:
         return JSONResponse(content={"error": e})
 
+
 @router.post("/login", status_code=status.HTTP_200_OK, response_model=Token)
 async def login_user(
     user_data: LoginUserRequest,
