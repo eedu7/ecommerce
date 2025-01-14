@@ -14,10 +14,12 @@ async def register_user(
     user_data: RegisterUserRequest,
     auth_controller: AuthController = Depends(Factory().get_auth_controller),
 ) -> Token:
-    data = user_data.model_dump()
-    await auth_controller.register(**data)
-    return await auth_controller.login(data["email"], data["password"])
-
+    try:
+        data = user_data.model_dump()
+        await auth_controller.register(**data)
+        return await auth_controller.login(data["email"], data["password"])
+    except Exception as e:
+        return JSONResponse(content={"error": e})
 
 @router.post("/login", status_code=status.HTTP_200_OK, response_model=Token)
 async def login_user(
