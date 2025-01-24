@@ -1,3 +1,5 @@
+import ShoppingBags from "@/lib/images";
+import Image from "next/image";
 import React from "react";
 
 const layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
@@ -8,7 +10,10 @@ const layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
                     {children}
                 </div>
                 <div className="col-span-1 hidden lg:flex">
-                    <h1>Hello World</h1>
+                    <Image
+                        src={ShoppingBags}
+                        alt="An image of two people of opposite gender holding bags of shopping"
+                    />
                 </div>
             </div>
         </section>
