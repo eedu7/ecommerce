@@ -2,70 +2,15 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
-import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-
-const formScheme = z
-    .object({
-        username: z
-            .string()
-            .min(3, { message: "Username must be at least 3 characters." })
-            .max(32, { message: "Username must be at most 32 characters." }),
-        email: z.string().email({ message: "Invalid email address." }),
-        password: z
-            .string()
-            .min(8, { message: "Password must be at least 8 characters." })
-            .max(16, {
-                message: "Password must be at most 16 characters long.",
-            }),
-        confirmPassword: z.string(),
-    })
-    .refine((data) => data.password === data.confirmPassword, {
-        message: "Passwords do not match",
-        path: ["confirmPassword"],
-    });
-
-type FormSchema = z.infer<typeof formScheme>;
-
-const FormInputField = ({
-    name,
-    label,
-    placeholder,
-    form,
-}: {
-    name: keyof FormSchema;
-    label: string;
-    placeholder: string;
-    form: ReturnType<typeof useForm<FormSchema>>;
-}) => (
-    <FormField
-        control={form.control}
-        name={name}
-        render={({ field }) => (
-            <FormItem>
-                <FormLabel>{label}</FormLabel>
-                <FormControl>
-                    <Input placeholder={placeholder} {...field} />
-                </FormControl>
-                <FormMessage />
-            </FormItem>
-        )}
-    />
-);
+import { Form } from "@/components/ui/form";
+import FormInputField from "../components/FormInputField";
+import { RegisterFormSchema, registerFormScheme } from "../scheme";
 
 const SignUpForm = () => {
-    const form = useForm<FormSchema>({
-        resolver: zodResolver(formScheme),
+    const form = useForm<RegisterFormSchema>({
+        resolver: zodResolver(registerFormScheme),
         defaultValues: {
             username: "",
             email: "",
@@ -76,7 +21,7 @@ const SignUpForm = () => {
         mode: "onChange",
     });
 
-    const onSubmit = (values: FormSchema) => {
+    const onSubmit = (values: RegisterFormSchema) => {
         console.log("Form Submitted:", values);
         alert("Form submitted successfully!");
     };
