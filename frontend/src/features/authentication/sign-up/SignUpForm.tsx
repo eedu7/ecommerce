@@ -5,7 +5,9 @@ import { useForm } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
+import Link from "next/link";
 import FormInputField from "../components/FormInputField";
+import { useAuth } from "../hooks/useAuth";
 import { RegisterFormSchema, registerFormScheme } from "../scheme";
 
 const SignUpForm = () => {
@@ -21,9 +23,11 @@ const SignUpForm = () => {
         mode: "onChange",
     });
 
-    const onSubmit = (values: RegisterFormSchema) => {
-        console.log("Form Submitted:", values);
-        alert("Form submitted successfully!");
+    const { register } = useAuth();
+
+    const onSubmit = (formData: RegisterFormSchema) => {
+        const { email, password, username } = formData;
+        register.mutate({ username, email, password });
     };
 
     return (
@@ -55,7 +59,14 @@ const SignUpForm = () => {
                     placeholder="Re-enter your password"
                     form={form}
                 />
-                <Button type="submit">Submit</Button>
+                <div>
+                    <Button type="submit">Register</Button>
+                    <Button
+                        variant="link"
+                        className="float-end text-xs text-blue-400">
+                        <Link href="/sign-in">Already have an account?</Link>
+                    </Button>
+                </div>
             </form>
         </Form>
     );

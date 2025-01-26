@@ -21,10 +21,6 @@ export const registerFormScheme = z
     });
 
 export const loginFormScheme = z.object({
-    username: z
-        .string()
-        .min(3, { message: "Username must be at least 3 characters." })
-        .max(32, { message: "Username must be at most 32 characters." }),
     email: z.string().email({ message: "Invalid email address." }),
     password: z
         .string()

@@ -11,6 +11,7 @@ const layout = ({ children }: Readonly<{ children: React.ReactNode }>) => {
                 </div>
                 <div className="col-span-1 hidden lg:flex">
                     <Image
+                        priority={false}
                         src={ShoppingBags}
                         alt="An image of two people of opposite gender holding bags of shopping"
                     />
