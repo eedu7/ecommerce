@@ -15,11 +15,14 @@ import {
 import NavigationSearch from "@/features/search/NavigationSearch";
 import { WebsiteLogo } from "@/lib/images";
 import { cn } from "@/lib/utils";
+import { ShoppingBasket } from "lucide-react";
 import Image from "next/image";
+import NavigationProfile from "./NavigationProfile";
+import { Button } from "./ui/button";
 
 export function NavigationBar() {
     return (
-        <NavigationMenu>
+        <NavigationMenu className="max-w-7xl mx-auto p-2">
             <NavigationMenuList>
                 <NavigationMenuItem>
                     <Link href="/" legacyBehavior passHref>
@@ -56,12 +59,12 @@ export function NavigationBar() {
                     <NavigationSearch />
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                    <Link href="/docs" legacyBehavior passHref>
-                        <NavigationMenuLink
-                            className={navigationMenuTriggerStyle()}>
-                            Documentation
-                        </NavigationMenuLink>
-                    </Link>
+                    <Button variant="outline">
+                        <ShoppingBasket height={44} width={44} />
+                    </Button>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                    <NavigationProfile />
                 </NavigationMenuItem>
             </NavigationMenuList>
         </NavigationMenu>

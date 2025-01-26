@@ -29,9 +29,7 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased bg-zinc-100`}>
                 <div className="fixed top-0 w-full">
-                    <div className="max-w-7xl mx-auto">
-                        <NavigationBar />
-                    </div>
+                    <NavigationBar />
                 </div>
                 <TanstackQueryProvider>{children}</TanstackQueryProvider>
             </body>
