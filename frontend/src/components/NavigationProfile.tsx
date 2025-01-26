@@ -10,15 +10,8 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import {
-    Bolt,
-    BookOpen,
-    ChevronDown,
-    Layers2,
-    LogOut,
-    Pin,
-    UserPen,
-} from "lucide-react";
+import { Bolt, ChevronDown, LogIn, LogOut, Pin, UserPen } from "lucide-react";
+import Link from "next/link";
 
 export default function NavigationProfile() {
     return (
@@ -26,11 +19,8 @@ export default function NavigationProfile() {
             <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="p-0 hover:bg-transparent">
                     <Avatar>
-                        <AvatarImage
-                            src="https://github.com/shadcn.png"
-                            alt="@shadcn"
-                        />
-                        <AvatarFallback>KK</AvatarFallback>
+                        <AvatarImage src="NO" alt="Nothing" />
+                        <AvatarFallback>User</AvatarFallback>
                     </Avatar>
                     <ChevronDown
                         size={16}
@@ -43,10 +33,10 @@ export default function NavigationProfile() {
             <DropdownMenuContent className="max-w-64">
                 <DropdownMenuLabel className="flex min-w-0 flex-col">
                     <span className="truncate text-sm font-medium text-foreground">
-                        Keith Kennedy
+                        User
                     </span>
                     <span className="truncate text-xs font-normal text-muted-foreground">
-                        k.kennedy@originui.com
+                        user@example.com
                     </span>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
@@ -58,25 +48,7 @@ export default function NavigationProfile() {
                             className="opacity-60"
                             aria-hidden="true"
                         />
-                        <span>Option 1</span>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                        <Layers2
-                            size={16}
-                            strokeWidth={2}
-                            className="opacity-60"
-                            aria-hidden="true"
-                        />
-                        <span>Option 2</span>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem>
-                        <BookOpen
-                            size={16}
-                            strokeWidth={2}
-                            className="opacity-60"
-                            aria-hidden="true"
-                        />
-                        <span>Option 3</span>
+                        <span>Setting</span>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
@@ -88,7 +60,7 @@ export default function NavigationProfile() {
                             className="opacity-60"
                             aria-hidden="true"
                         />
-                        <span>Option 4</span>
+                        <span>Favourite</span>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
                         <UserPen
@@ -97,10 +69,21 @@ export default function NavigationProfile() {
                             className="opacity-60"
                             aria-hidden="true"
                         />
-                        <span>Option 5</span>
+                        <span>Edit Profile</span>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                    <Link href="/sign-in" className="flex gap-2">
+                        <LogIn
+                            size={16}
+                            strokeWidth={2}
+                            className="opacity-60"
+                            aria-hidden="true"
+                        />
+                        <span>Login</span>
+                    </Link>
+                </DropdownMenuItem>
                 <DropdownMenuItem>
                     <LogOut
                         size={16}
