@@ -35,33 +35,14 @@ const SignUpForm = () => {
             <form
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="space-y-4 md:space-y-8">
-                <FormInputField
-                    name="username"
-                    label="Username"
-                    placeholder="Enter your username"
-                    form={form}
-                />
-                <FormInputField
-                    name="email"
-                    label="Email"
-                    placeholder="Enter your email"
-                    form={form}
-                />
-                <FormInputField
-                    name="password"
-                    label="Password"
-                    placeholder="Enter your password"
-                    form={form}
-                />
-                <FormInputField
-                    name="confirmPassword"
-                    label="Confirm Password"
-                    placeholder="Re-enter your password"
-                    form={form}
-                />
+                <FormInputField name="username" form={form} />
+                <FormInputField name="email" form={form} />
+                <FormInputField name="password" form={form} />
+                <FormInputField name="confirmPassword" form={form} />
                 <div>
                     <Button type="submit">Register</Button>
                     <Button
+                        type="button"
                         variant="link"
                         className="float-end text-xs text-blue-400">
                         <Link href="/sign-in">Already have an account?</Link>

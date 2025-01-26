@@ -33,21 +33,12 @@ const SignInForm = () => {
             <form
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="space-y-4 md:space-y-8">
-                <FormInputField
-                    name="email"
-                    label="Email"
-                    placeholder="Enter your email"
-                    form={form}
-                />
-                <FormInputField
-                    name="password"
-                    label="Password"
-                    placeholder="Enter your password"
-                    form={form}
-                />
+                <FormInputField name="email" form={form} />
+                <FormInputField name="password" form={form} />
                 <div>
                     <Button type="submit">Log In</Button>
                     <Button
+                        type="button"
                         variant="link"
                         className="float-end text-xs text-blue-400">
                         <Link href="/sign-up">Register here</Link>
