@@ -1,4 +1,3 @@
-import { NavigationBar } from "@/components/NavigationBar";
 import TanstackQueryProvider from "@/lib/providers/TanstackQueryProvider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -28,9 +27,6 @@ export default function RootLayout({
         <html lang="en">
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased bg-zinc-100`}>
-                <div className="fixed top-0 w-full">
-                    <NavigationBar />
-                </div>
                 <TanstackQueryProvider>{children}</TanstackQueryProvider>
             </body>
         </html>
