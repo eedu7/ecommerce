@@ -21,7 +21,7 @@ export default function NavigationSearch() {
     }, [inputValue]);
 
     return (
-        <div className="space-y-2">
+        <div className="space-y-2 lg:w-96">
             <div className="relative">
                 <Input
                     id={id}
