@@ -7,11 +7,8 @@ from fastapi.responses import JSONResponse
 
 from api import router
 from core.exceptions import CustomException
-from core.fastapi.middlewares import (
-    AuthBackend,
-    AuthenticationMiddleware,
-    SQLAlchemyMiddleware,
-)
+from core.fastapi.middlewares import (AuthBackend, AuthenticationMiddleware,
+                                      SQLAlchemyMiddleware)
 
 
 def on_auth_error(request: Request, exc: Exception):
@@ -33,7 +30,8 @@ def init_listeners(app_: FastAPI) -> None:
     @app_.exception_handler(Exception)
     async def custom_exception_handler(request: Request, exc: CustomException):
         return JSONResponse(
-            status_code=exc.code,
+            # status_code=exc.code,
+            status_code=400,
             content={"error_code": exc.error_code, "message": exc.message},
         )
 
